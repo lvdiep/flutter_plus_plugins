@@ -12,7 +12,11 @@ flutter:
         fileName: device_info_plus_web.dart
 
 dependencies:
-  device_info_plus_platform_interface: ^2.1.0
+  device_info_plus_platform_interface: 
+    git:
+      url: git@github.com:lvdiep/flutter_plus_plugins.git
+      path: packages/device_info_plus/device_info_plus_platform_interface
+      ref: dev
   flutter_web_plugins:
     sdk: flutter
   flutter:

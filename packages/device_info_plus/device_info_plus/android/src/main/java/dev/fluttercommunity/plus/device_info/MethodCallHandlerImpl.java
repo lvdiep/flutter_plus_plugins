@@ -79,6 +79,8 @@ class MethodCallHandlerImpl implements MethodChannel.MethodCallHandler {
       version.put("sdkInt", Build.VERSION.SDK_INT);
       build.put("version", version);
 
+      build.put("deviceName", Settings.Global.getString(this.contentResolver, "device_name"));
+
       result.success(build);
     } else {
       result.notImplemented();

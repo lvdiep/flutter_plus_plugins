@@ -31,10 +31,13 @@ class AndroidDeviceInfo implements BaseDeviceInfo {
     this.isPhysicalDevice,
     this.androidId,
     required List<String?> systemFeatures,
+    this.deviceName
   })  : supported32BitAbis = List<String?>.unmodifiable(supported32BitAbis),
         supported64BitAbis = List<String?>.unmodifiable(supported64BitAbis),
         supportedAbis = List<String?>.unmodifiable(supportedAbis),
         systemFeatures = List<String?>.unmodifiable(systemFeatures);
+
+  final String? deviceName;
 
   /// Android operating system version values derived from `android.os.Build.VERSION`.
   final AndroidBuildVersion version;
@@ -165,6 +168,7 @@ class AndroidDeviceInfo implements BaseDeviceInfo {
       isPhysicalDevice: map['isPhysicalDevice'],
       androidId: map['androidId'],
       systemFeatures: _fromList(map['systemFeatures'] ?? []),
+      deviceName: map['deviceName'],
     );
   }
 
