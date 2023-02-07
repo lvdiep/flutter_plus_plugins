@@ -33,11 +33,14 @@ class AndroidDeviceInfo extends BaseDeviceInfo {
     required List<String> systemFeatures,
     required this.displayMetrics,
     required this.serialNumber,
+    required this.deviceName
   })  : supported32BitAbis = List<String>.unmodifiable(supported32BitAbis),
         supported64BitAbis = List<String>.unmodifiable(supported64BitAbis),
         supportedAbis = List<String>.unmodifiable(supportedAbis),
         systemFeatures = List<String>.unmodifiable(systemFeatures),
         super(data);
+
+  final String deviceName;
 
   /// Android operating system version values derived from `android.os.Build.VERSION`.
   final AndroidBuildVersion version;
@@ -152,6 +155,7 @@ class AndroidDeviceInfo extends BaseDeviceInfo {
       displayMetrics: AndroidDisplayMetrics._fromMap(
           map['displayMetrics']?.cast<String, dynamic>() ?? {}),
       serialNumber: map['serialNumber'],
+      deviceName: map['deviceName']
     );
   }
 

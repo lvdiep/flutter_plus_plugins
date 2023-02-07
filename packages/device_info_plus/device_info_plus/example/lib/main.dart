@@ -109,6 +109,7 @@ class _MyAppState extends State<MyApp> {
       'displayXDpi': build.displayMetrics.xDpi,
       'displayYDpi': build.displayMetrics.yDpi,
       'serialNumber': build.serialNumber,
+      'deviceName': build.deviceName,
     };
   }
 

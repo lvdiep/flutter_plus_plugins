@@ -10,6 +10,8 @@ import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import kotlin.collections.HashMap
+import android.provider.Settings
+import android.content.Context
 
 /**
  * The implementation of [MethodChannel.MethodCallHandler] for the plugin. Responsible for
@@ -18,6 +20,7 @@ import kotlin.collections.HashMap
 internal class MethodCallHandlerImpl(
     private val packageManager: PackageManager,
     private val windowManager: WindowManager,
+    private val context: Context,
 ) : MethodCallHandler {
 
     override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
@@ -88,6 +91,8 @@ internal class MethodCallHandlerImpl(
             } else {
                 build["serialNumber"] = Build.SERIAL
             }
+
+            build["deviceName"] = Settings.Global.getString(context.contentResolver, "device_name")
 
             result.success(build)
         } else {
